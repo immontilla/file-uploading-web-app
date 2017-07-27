@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Secure File Upload</title>
+      <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'/>
+   </head>
+   <body>
+      <div id="main" class="card">
+         <div class="card-header">
+            <strong>Spring Boot</strong>
+         </div>
+         <div class="card-block">
+            <h4 class="card-title">Secure File Upload (ClamAV + Apache Tika)</h4>
+            <form id="upload-file-form">
+               <div class="form-group">
+                  <label for="upload-file-input">Upload your file:</label>
+                  <input id="upload-file-input" type="file" class="form-control-file" 
+                     name="file" aria-describedby="fileHelp" accept=".csv" />
+                  <small id="fileHelp" class="form-text text-muted">CSV files - 3 Mb max.</small>
+               </div>
+            </form>
+         </div>
+      </div>
+      <div id="results" class="card">
+         <div class="card-header card-outline-primary">
+            <strong>Results</strong>
+         </div>
+         <div class="card-block">
+            <span>File size:&nbsp;</span><span id="file-size"></span><br/>
+            <span>File extension:&nbsp;</span><span id="file-extension"></span><br/>
+            <span>Virus free:&nbsp;</span><span id="file-virus-free"></span><br/>
+			<span>Content-Type:&nbsp;</span><span id="file-content-type"></span><br/>						
+			<span>Uploaded:&nbsp;</span><span id="file-uploaded"></span>                      
+         </div>
+      </div>
+      <div id="finalResult" role="alert">
+         <p id="finalResultText"></p>
+      </div>
+      <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+      <script type="text/javascript" src="/webjars/tether/1.4.0/dist/js/tether.min.js"></script>      
+      <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/code.js"></script>
+   </body>
+</html>
