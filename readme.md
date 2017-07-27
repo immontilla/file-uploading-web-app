@@ -1,29 +1,29 @@
 A security in mind file uploading web app
 =
-This a proof-of-concept project to show how to implement a secure file uploading web app using open source software & libraries:
-**Build/Deploy**
-Java 8 : http://openjdk.java.net/ | http://www.oracle.com/technetwork/java/index.html
-Maven : https://maven.apache.org/
-**Web app**
-Spring Boot: http://projects.spring.io/spring-boot/
-Twitter Bootstrap: http://v4-alpha.getbootstrap.com/
-jQuery : http://jquery.com/
-WebJars : http://www.webjars.org/
-**Antivirus**
-ClamAv : http://www.clamav.net/
-clamav-client : https://github.com/cdarras/clamav-client
-**Content-Type Detection**
-Apache Tika : https://tika.apache.org/
-**Helper libraries**
-Google Guava : https://github.com/google/guava
-Apache Commons-IO : https://commons.apache.org/proper/commons-io/
-**Testing**
-JUnit : http://junit.org/junit4/
-Docker : https://www.docker.com/
-ClamAV Docker Image : https://hub.docker.com/r/mkodockx/docker-clamav/
-**Documentation/Guidelines**
-OWASP - Unrestricted File Upload : https://www.owasp.org/index.php/Unrestricted_File_Upload
-SANS - 8 Basic Rules to Implement Secure File Uploads : https://software-security.sans.org/blog/2009/12/28/8-basic-rules-to-implement-secure-file-uploads
+This a proof-of-concept project to show how to implement a secure file uploading web app using open source software & libraries: <br/>
+**Build/Deploy** <br/>
+Java 8 : http://openjdk.java.net/ | http://www.oracle.com/technetwork/java/index.html <br/>
+Maven : https://maven.apache.org/ <br/>
+**Web app** <br/>
+Spring Boot: http://projects.spring.io/spring-boot/ <br/>
+Twitter Bootstrap: http://v4-alpha.getbootstrap.com/ <br/>
+jQuery : http://jquery.com/ <br/>
+WebJars : http://www.webjars.org/ <br/>
+**Antivirus** <br/>
+ClamAv : http://www.clamav.net/ <br/>
+clamav-client : https://github.com/cdarras/clamav-client <br/>
+**Content-Type Detection** <br/>
+Apache Tika : https://tika.apache.org/ <br/>
+**Helper libraries** <br/>
+Google Guava : https://github.com/google/guava <br/>
+Apache Commons-IO : https://commons.apache.org/proper/commons-io/ <br/>
+**Testing** <br/>
+JUnit : http://junit.org/junit4/ <br/>
+Docker : https://www.docker.com/ <br/>
+ClamAV Docker Image : https://hub.docker.com/r/mkodockx/docker-clamav/ <br/>
+**Documentation/Guidelines** <br/>
+OWASP - Unrestricted File Upload : https://www.owasp.org/index.php/Unrestricted_File_Upload <br/>
+SANS - 8 Basic Rules to Implement Secure File Uploads : https://software-security.sans.org/blog/2009/12/28/8-basic-rules-to-implement-secure-file-uploads <br/>
 
 #### <i class="icon-cog">Settings</i>
 1.- If you haven't already done, please clone this repository
