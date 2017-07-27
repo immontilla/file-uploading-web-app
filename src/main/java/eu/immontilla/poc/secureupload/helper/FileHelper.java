@@ -19,9 +19,10 @@ import com.google.common.base.Strings;
 import com.google.common.io.Files;
 
 import xyz.capybara.clamav.ClamavClient;
+import xyz.capybara.clamav.ClamavException;
+import xyz.capybara.clamav.Platform;
 import xyz.capybara.clamav.commands.scan.result.ScanResult;
-import xyz.capybara.clamav.configuration.Platform;
-import xyz.capybara.clamav.exceptions.ClamavException;
+
 
 /**
  * Helper class
