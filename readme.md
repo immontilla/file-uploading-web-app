@@ -49,16 +49,16 @@ sudo /etc/init.d/clamav-daemon status
 ```
 3.- <i class="icon-pencil"></i> Review src/main/resources/application.properties file before building
 
-> server.port=8090
-> spring.http.multipart.max-file-size=3MB
-> spring.http.multipart.max-request-size=3MB
-> temp.path=/tmp/unsafe
-> file.path=/tmp/safe
-> clam.av.server.host=localhost
-> clam.av.server.port=3310
-> clam.av.server.platform=UNIX
-> logging.level.org.springframework=INFO
-> logging.level.eu.immontilla.poc=DEBUG
+> server.port=8090 <br/>
+> spring.http.multipart.max-file-size=3MB <br/>
+> spring.http.multipart.max-request-size=3MB <br/>
+> temp.path=/tmp/unsafe <br/>
+> file.path=/tmp/safe <br/>
+> clam.av.server.host=localhost <br/>
+> clam.av.server.port=3310 <br/>
+> clam.av.server.platform=UNIX <br/>
+> logging.level.org.springframework=INFO <br/>
+> logging.level.eu.immontilla.poc=DEBUG <br/>
 
 - *server.port* is the port number the embedded Tomcat server will be listening on.
 - *spring.http.multipart.max-file-size* and *spring.http.multipart.max-request-size* set the maximum accepted file size.
