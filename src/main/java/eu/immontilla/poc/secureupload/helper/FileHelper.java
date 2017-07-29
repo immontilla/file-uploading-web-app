@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -22,7 +20,6 @@ import xyz.capybara.clamav.ClamavClient;
 import xyz.capybara.clamav.ClamavException;
 import xyz.capybara.clamav.Platform;
 import xyz.capybara.clamav.commands.scan.result.ScanResult;
-
 
 /**
  * Helper class
@@ -107,7 +104,7 @@ public class FileHelper {
             String destFilename = randomFilename();
             File destination = new File(Paths.get(filePath, destFilename).toString());
             FileUtils.copyInputStreamToFile(file.getInputStream(), destination);
-            LOGGER.info("Saved at " + Paths.get(filePath, destFilename).toString());
+            LOGGER.info(Constants.MSG_SAVED_AT + Paths.get(filePath, destFilename).toString());
             return destFilename;
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
@@ -124,31 +121,61 @@ public class FileHelper {
         LOGGER.info(path + Constants.MSG_DELETED + (new File(path).delete()));
     }
 
+    /**
+     * Return clamavHost
+     * 
+     * @return
+     */
     public String getClamavHost() {
         return clamavHost;
     }
 
+    /**
+     * Set clamavHost
+     * 
+     * @param clamavHost
+     */
     public void setClamavHost(String clamavHost) {
         this.clamavHost = clamavHost;
     }
 
+    /**
+     * Return clamavPort
+     * 
+     * @return
+     */
     public int getClamavPort() {
         return clamavPort;
     }
 
+    /**
+     * Set clamavPort
+     * 
+     * @param clamavPort
+     */
     public void setClamavPort(int clamavPort) {
         this.clamavPort = clamavPort;
     }
 
+    /**
+     * Return clamavPlatform
+     * 
+     * @return
+     */
     public Platform getClamavPlatform() {
         return clamavPlatform;
     }
 
+    /**
+     * Set clamavPlatform
+     * 
+     * @param clamavPlatform
+     */
     public void setClamavPlatform(String clamavPlatform) {
         if (!Strings.isNullOrEmpty(clamavPlatform)) {
-            if (clamavPlatform.equalsIgnoreCase("UNIX")) {
+            if (clamavPlatform.equalsIgnoreCase(Constants.UNIX)) {
                 this.clamavPlatform = Platform.UNIX;
-            } else if (clamavPlatform.equalsIgnoreCase("WINDOWS")) {
+            } else if (clamavPlatform.equalsIgnoreCase(Constants.WINDOWS)) {
                 this.clamavPlatform = Platform.WINDOWS;
             } else {
                 this.clamavPlatform = Platform.JVM_PLATFORM;
@@ -156,10 +183,14 @@ public class FileHelper {
         }
     }
 
+    /**
+     * Return a randomized filename
+     * 
+     * @return
+     */
     private String randomFilename() {
-        ZonedDateTime now = ZonedDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Constants.DATEFORMAT);
-        return (new StringBuilder()).append(RandomStringUtils.randomAlphabetic(16).toUpperCase())
-                .append(Constants.UNDERSCORE).append(now.format(dtf)).append(".csv").toString();
+        return (new StringBuilder())
+                .append(RandomStringUtils.randomAlphabetic(Constants.MAX_FILENAME_CHARS).toLowerCase())
+                .append(Constants.DOT_CSV_EXTENSION).toString();
     }
 }
