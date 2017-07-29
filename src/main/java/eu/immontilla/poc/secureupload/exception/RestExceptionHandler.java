@@ -21,6 +21,14 @@ import eu.immontilla.poc.secureupload.helper.Constants;
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private final Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
 
+    /**
+     * Return a 413 Payload Too Large when the user tried to upload a large sized file. The maximum size is configured
+     * in the application.properties resource file
+     * 
+     * @param request
+     * @param ex
+     * @return
+     */
     @ExceptionHandler({ MultipartException.class, SizeLimitExceededException.class,
             FileSizeLimitExceededException.class, IllegalStateException.class })
     public ResponseEntity<Object> handleSizeExceededException(final WebRequest request, final MultipartException ex) {
