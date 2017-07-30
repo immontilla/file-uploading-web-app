@@ -33,6 +33,7 @@ git clone https://github.com/immontilla/file-uploading-web-app.git
 2.- An available and updated ClamAV daemon is a **must** to run this app. Every candidate file has to be scanned for virus to be accepted as an uploaded file. Keeping in mind this is just a PoC, I suggest you to run a ClamAV docker image.
 ```
 docker pull mkodockx/docker-clamav
+docker run -d -p 3310:3310 mkodockx/docker-clamav
 ```
 If you prefer a local installation, run this:
 ```
@@ -62,8 +63,8 @@ sudo /etc/init.d/clamav-daemon status
 - *server.port* is the port number the embedded Tomcat server will be listening on.
 - *spring.http.multipart.max-file-size* and *spring.http.multipart.max-request-size* set the maximum accepted file size.
 - *temp.path* and *file.path* are the locations paths where uploaded files will be stored. **Important** If you are planning to run this web app in a Windows machine, the back-slash \ has to be escaped with double slashes //
-- *clam.av.server.host*, *clam.av.server.port* and *clam.av.server.platform* are the host and port the ClamAV daemon is listening on, and platform is its operating system type. Platform could it be: UNIX, WINDOWS or JVM_PLATFORM. Default values belong to a local Linux installation.
-- *logging.level.org.springframework* and *logging.level.eu.immontilla.poc* as usual, these are just logback level packages.
+- *clam.av.server.host*, *clam.av.server.port* and *clam.av.server.platform* are the host and port the ClamAV daemon is listening on whereas platform is its operating system type. Platform could it be: UNIX, WINDOWS or JVM_PLATFORM. Default values belong to a local Linux installation.
+- *logging.level.org.springframework* and *logging.level.eu.immontilla.poc* are just logback levels.
 
 4.- Run a mvn clean install to see if everything is OK including the tests.
 ```
