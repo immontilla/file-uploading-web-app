@@ -4,27 +4,28 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>eu.immontilla.poc</groupId>
    <artifactId>secure-upload</artifactId>
-   <version>0.0.1-SNAPSHOT</version>
-   <packaging>war</packaging>
+   <version>1.0.0</version>
+   <packaging>jar</packaging>
    <name>secure-upload</name>
    <description>Secure File Upload</description>
    <parent>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-parent</artifactId>
-      <version>1.5.4.RELEASE</version>
-      <relativePath /> <!-- lookup parent from repository -->
+      <version>1.5.8.RELEASE</version>
+      <relativePath />
    </parent>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
       <java.version>1.8</java.version>
-      <jquery.version>3.1.1-1</jquery.version>
-      <bootstrap.version>4.0.0-alpha.6-1</bootstrap.version>
+      <jquery.version>3.2.1</jquery.version>
+      <bootstrap.version>4.0.0-beta.2</bootstrap.version>
       <tether.version>1.4.0</tether.version>
       <clamav.version>2.0.0</clamav.version>
       <tika.version>1.16</tika.version>
-      <guava.version>22.0</guava.version>
-      <commonsio.version>2.5</commonsio.version>
+      <guava.version>23.0</guava.version>
+      <commonsio.version>2.6</commonsio.version>
+      <docker.image.prefix>???</docker.image.prefix>
    </properties>
    <dependencies>
       <dependency>
@@ -83,6 +84,39 @@
    </dependencies>
    <build>
       <plugins>
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>dockerfile-maven-plugin</artifactId>
+            <version>1.3.6</version>
+            <configuration>
+                <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                <buildArgs>
+                    <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                </buildArgs>
+            </configuration>
+        </plugin>            
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>unpack</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>unpack</goal>
+                    </goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>${project.artifactId}</artifactId>
+                                <version>${project.version}</version>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
          <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
