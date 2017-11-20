@@ -9,6 +9,9 @@ docker run -itd --name avserver --net=host -p 3310:3310 mkodockx/docker-clamav
 ```
  
 #### <i class="icon-upload"> Run & Deploy in a server</i>
+
+**Edit pom.xml and change the docker.image.prefix property value**
+
 ```
 mvn spring-boot:run
 ```
@@ -16,6 +19,9 @@ mvn spring-boot:run
 ```
 mvn clean install dockerfile:build 
 ```
+
+change ??? to the docker.image.prefix pom.xml property value
+
 ```
 docker run -itd --name=secure_upload --net=host -p 8090:8090 ???/secure-upload 
 ```
