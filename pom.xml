@@ -19,13 +19,13 @@
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
       <java.version>1.8</java.version>
       <jquery.version>3.2.1</jquery.version>
-      <bootstrap.version>4.0.0-beta.2</bootstrap.version>
+      <bootstrap.version>4.0.0-alpha.6-1</bootstrap.version>
       <tether.version>1.4.0</tether.version>
       <clamav.version>2.0.0</clamav.version>
       <tika.version>1.16</tika.version>
       <guava.version>23.0</guava.version>
       <commonsio.version>2.6</commonsio.version>
-      <docker.image.prefix>???</docker.image.prefix>
+      <docker.image.prefix>immontilla</docker.image.prefix>
    </properties>
    <dependencies>
       <dependency>
