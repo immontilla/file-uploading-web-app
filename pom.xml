@@ -25,7 +25,7 @@
       <tika.version>1.16</tika.version>
       <guava.version>23.0</guava.version>
       <commonsio.version>2.6</commonsio.version>
-      <docker.image.prefix>immontilla</docker.image.prefix>
+      <docker.image.prefix>???</docker.image.prefix>
    </properties>
    <dependencies>
       <dependency>
