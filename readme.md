@@ -10,7 +10,7 @@ docker run -itd --name avserver --net=host -p 3310:3310 mkodockx/docker-clamav
  
 #### <i class="icon-upload"> Run & Deploy in a server</i>
 
-Edit pom.xml and change the docker.image.prefix property value, the run
+Edit pom.xml and change the docker.image.prefix property value, then run
 
 ```
 mvn spring-boot:run
