@@ -5,7 +5,7 @@
    <groupId>eu.immontilla.poc</groupId>
    <artifactId>secure-upload</artifactId>
    <version>1.0.0</version>
-   <packaging>war</packaging>
+   <packaging>jar</packaging>
    <name>secure-upload</name>
    <description>Secure File Upload</description>
    <parent>
@@ -69,6 +69,11 @@
       <dependency>
          <groupId>org.webjars</groupId>
          <artifactId>webjars-locator</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-tomcat</artifactId>
+         <scope>provided</scope>
       </dependency>
       <dependency>
          <groupId>org.springframework.boot</groupId>
