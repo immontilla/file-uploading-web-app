@@ -22,7 +22,7 @@ JUnit : <a href="http://junit.org/junit4/" target="_blank">http://junit.org/juni
 Docker : <a href="https://www.docker.com/" target="_blank">https://www.docker.com/</a> <br/>
 ClamAV Docker Image : <a href="https://hub.docker.com/r/mkodockx/docker-clamav/" target="_blank">https://hub.docker.com/r/mkodockx/docker-clamav/</a> <br/>
 **Documentation/Guidelines** <br/>
-OWASP - Unrestricted File Upload : <a href="https://www.owasp.org/index.php/Unrestricted_File_Upload" target="_blank">https://www.owasp.org/index.php/Unrestricted_File_Upload</a> <br/> 
+OWASP - Unrestricted File Upload : <a href="https://www.owasp.org/index.php/Unrestricted_File_Upload" target="_blank">https://www.owasp.org/index.php/Unrestricted_File_Upload</a> <br/>
 SANS - 8 Basic Rules to Implement Secure File Uploads : <a href="https://software-security.sans.org/blog/2009/12/28/8-basic-rules-to-implement-secure-file-uploads" target="_blank">https://software-security.sans.org/blog/2009/12/28/8-basic-rules-to-implement-secure-file-uploads</a> <br/>
 
 #### <i class="icon-cog">Settings</i>
@@ -30,20 +30,20 @@ SANS - 8 Basic Rules to Implement Secure File Uploads : <a href="https://softwar
 ```
 git clone https://github.com/immontilla/file-uploading-web-app.git
 ```
-2.- An available and updated ClamAV daemon is a **must** to run this app. Every candidate file has to be scanned for virus to be accepted as an uploaded file. Keeping in mind this is just a PoC, I suggest you to run a ClamAV docker image.
+2.- An available and updated ClamAV daemon is **necessary** to run this app. Every candidate file has to be scanned for virus to be accepted as an uploaded file. You can use a docker image.
 ```
 docker pull mkodockx/docker-clamav
 docker run -d -p 3310:3310 mkodockx/docker-clamav
 ```
-If you prefer a local installation, run this:
+Or, install ClamAV locally:
 ```
 sudo apt-get update && sudo apt-get install clamav clamav-daemon
 ```
-And don't forget to **configure the ClamAV daemon**:
+*Don't forget to configure the ClamAV daemon**:
 ```
 sudo dpkg-reconfigure clamav-base
 ```
-Finally, check its status with:
+Check its status with:
 ```
 sudo /etc/init.d/clamav-daemon status
 ```
@@ -59,7 +59,7 @@ sudo /etc/init.d/clamav-daemon status
 > clam.av.server.platform=UNIX <br/>
 > logging.level.org.springframework=INFO <br/>
 > logging.level.eu.immontilla.poc=DEBUG <br/>
-
+where:
 - *server.port* is the port number the embedded Tomcat server will be listening on.
 - *spring.http.multipart.max-file-size* and *spring.http.multipart.max-request-size* set the maximum accepted file size.
 - *temp.path* and *file.path* are the locations paths where uploaded files will be stored. **Important** If you are planning to run this web app in a Windows machine, the back-slash \ has to be escaped with double slashes //
@@ -83,9 +83,9 @@ curl -i -X POST -F file=@fake-csv-it-is-a-png-file.csv http://localhost:8090/upl
 ```
 produces a 400 Bad Request response because fake-csv-it-is-a-png-file.csv is a PNG image file with a fake extension:
 ```
-HTTP/1.1 100 
+HTTP/1.1 100
 
-HTTP/1.1 400 
+HTTP/1.1 400
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
 Date: Thu, 27 Jul 2017 19:11:03 GMT
@@ -98,7 +98,7 @@ curl -i -X POST http://localhost:8090/upload
 ```
 produces a 415 Unsupported media type because there is no file:
 ```
-HTTP/1.1 415 
+HTTP/1.1 415
 Accept: multipart/form-data
 Content-Length: 0
 Date: Thu, 27 Jul 2017 19:13:29 GMT
@@ -109,9 +109,9 @@ curl -i -X POST -F file=@libre-office-csv-file.csv http://localhost:8090/upload
 ```
 produces a 200 OK response code because libre-office-csv-file.csv is a valid virus-free file:
 ```
-HTTP/1.1 100 
+HTTP/1.1 100
 
-HTTP/1.1 200 
+HTTP/1.1 200
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
 Date: Thu, 27 Jul 2017 19:17:36 GMT
@@ -125,9 +125,9 @@ curl -i -X POST -F file=@FL_insurance_sample.csv http://localhost:8090/upload
 ```
 produces a 413 Payload too large response code because FL_insurance_sample.csv size' is bigger than 3Mb:
 ```
-HTTP/1.1 100 
+HTTP/1.1 100
 
-HTTP/1.1 413 
+HTTP/1.1 413
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
 Date: Thu, 27 Jul 2017 19:18:52 GMT
@@ -139,5 +139,3 @@ Connection: close
 #### <i class="icon-refresh"> Open the web app in your browser </i>
 
 <a href="http://localhost:8090/" target="_blank">http://localhost:8090/</a>
-
-
