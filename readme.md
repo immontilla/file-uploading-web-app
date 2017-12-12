@@ -30,22 +30,10 @@ SANS - 8 Basic Rules to Implement Secure File Uploads : <a href="https://softwar
 ```
 git clone https://github.com/immontilla/file-uploading-web-app.git
 ```
-2.- An available and updated ClamAV daemon is **necessary** to run this app. Every candidate file has to be scanned for virus to be accepted as an uploaded file. You can use a docker image.
+2.- An available and updated ClamAV daemon is **necessary** to run this app. Every candidate file has to be scanned for virus to be accepted as an uploaded file. Fortunately, there is a docker image to help you out. You need to name it **av** and add it to the **net host**. Also, you need to add **127.0.0.1 av** to /etc/hosts file.
 ```
 docker pull mkodockx/docker-clamav
-docker run -d -p 3310:3310 mkodockx/docker-clamav
-```
-Or, install ClamAV locally:
-```
-sudo apt-get update && sudo apt-get install clamav clamav-daemon
-```
-*Don't forget to configure the ClamAV daemon**:
-```
-sudo dpkg-reconfigure clamav-base
-```
-Check its status with:
-```
-sudo /etc/init.d/clamav-daemon status
+docker run -d --name av --net=host -p 3310:3310 mkodockx/docker-clamav
 ```
 3.- <i class="icon-pencil"></i> Review src/main/resources/application.properties file before building
 
