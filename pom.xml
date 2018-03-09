@@ -11,19 +11,19 @@
    <parent>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-parent</artifactId>
-      <version>1.5.9.RELEASE</version>
+      <version>2.0.0.RELEASE</version>
       <relativePath />
    </parent>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
       <java.version>1.8</java.version>
-      <jquery.version>3.2.1</jquery.version>
-      <bootstrap.version>4.0.0-alpha.6-1</bootstrap.version>
-      <tether.version>1.4.0</tether.version>
+      <jquery.version>3.3.1-1</jquery.version>
+      <bootstrap.version>4.0.0-2</bootstrap.version>
+      <tether.version>1.4.3</tether.version>
       <clamav.version>2.0.0</clamav.version>
-      <tika.version>1.16</tika.version>
-      <guava.version>23.0</guava.version>
+      <tika.version>1.17</tika.version>
+      <guava.version>24.0-jre</guava.version>
       <commonsio.version>2.6</commonsio.version>
    </properties>
    <dependencies>
@@ -68,7 +68,7 @@
       </dependency>
       <dependency>
          <groupId>org.webjars</groupId>
-         <artifactId>webjars-locator</artifactId>
+         <artifactId>webjars-locator-core</artifactId>
       </dependency>
       <dependency>
          <groupId>org.springframework.boot</groupId>

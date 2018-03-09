@@ -65,8 +65,10 @@ public class FileHelper {
             ScanResult scanResult = client.scan(inputStream);
             LOGGER.info(Constants.MSG_SCAN_RESULT + scanResult.getStatus().name());
             return scanResult.getFoundViruses().isEmpty();
-        } catch (IOException | ClamavException e) {
-            LOGGER.error(e.getMessage());
+        } catch (IOException e) {
+            LOGGER.error(String.format("IOException: %s", e.getMessage()));
+        } catch (ClamavException e) {
+            LOGGER.error(String.format("ClamavException: %s - %s:%s", e.getMessage(),getClamavHost(),getClamavPort()));
         }
         return false;
     }
@@ -86,7 +88,7 @@ public class FileHelper {
                 return true;
             }
         } catch (IOException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.error(String.format("IOException: %s", e.getMessage()));
         }
         return false;
     }
@@ -107,7 +109,7 @@ public class FileHelper {
             LOGGER.info(Constants.MSG_SAVED_AT + Paths.get(filePath, destFilename).toString());
             return destFilename;
         } catch (IOException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.error(String.format("IOException: %s", e.getMessage()));
             return null;
         }
     }
