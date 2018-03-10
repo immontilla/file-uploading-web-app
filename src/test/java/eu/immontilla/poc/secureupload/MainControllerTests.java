@@ -42,8 +42,8 @@ public class MainControllerTests {
     @Test
     public void shouldReturnBadRequestRequiredPropertyMissing() throws Exception {
         ResultMatcher badRequest = MockMvcResultMatchers.status().isBadRequest();
-        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.multipart("/upload");
-        mockMVC.perform(builder).andExpect(badRequest).andReturn();
+        MockHttpServletRequestBuilder uploadRequest = MockMvcRequestBuilders.multipart("/upload");
+        mockMVC.perform(uploadRequest).andExpect(badRequest).andReturn();
     }
     
     /**
@@ -54,20 +54,20 @@ public class MainControllerTests {
     public void shouldReturnBadRequestInvalidFileExtension() throws Exception {
         ResultMatcher badRequest = MockMvcResultMatchers.status().isBadRequest();
         MockMultipartFile csvFile = new MockMultipartFile("file", "test", "text/csv", "a,b,c,d,e,f".getBytes());
-        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.multipart("/upload").file(csvFile);
-        mockMVC.perform(builder).andExpect(badRequest).andExpect(jsonPath("$.validFileExtension").value("false"));
+        MockHttpServletRequestBuilder uploadRequest = MockMvcRequestBuilders.multipart("/upload").file(csvFile);
+        mockMVC.perform(uploadRequest).andExpect(badRequest).andExpect(jsonPath("$.validFileExtension").value("false"));
     }
     
     /**
-     * 
+     * A valid csv file upload should return 200 OK and failed equals to false
      * @throws Exception
      */
     @Test
     public void shouldReturnOK() throws Exception {
         ResultMatcher ok = MockMvcResultMatchers.status().isOk();
         MockMultipartFile csvFile = new MockMultipartFile("file", "file.csv", "text/csv", "a,b,c,d,e,f".getBytes());
-        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.multipart("/upload").file(csvFile);
-        mockMVC.perform(builder).andExpect(ok).andExpect(jsonPath("$.failed").value("false"));
+        MockHttpServletRequestBuilder uploadRequest = MockMvcRequestBuilders.multipart("/upload").file(csvFile);
+        mockMVC.perform(uploadRequest).andExpect(ok).andExpect(jsonPath("$.failed").value("false"));
     }
 
 }
