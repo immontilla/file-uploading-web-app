@@ -22,7 +22,7 @@
       <bootstrap.version>4.0.0-2</bootstrap.version>
       <tether.version>1.4.3</tether.version>
       <clamav.version>2.0.0</clamav.version>
-      <tika.version>1.19.1</tika.version>
+      <tika.version>[1.20,)</tika.version>
       <guava.version>24.0-jre</guava.version>
       <commonsio.version>2.6</commonsio.version>
    </properties>
